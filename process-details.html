@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podrobnosti procesa — Procesni nadzor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">● PROCESNI NADZOR</div>
+    <nav>
+      <a href="dashboard.html">Nadzorna plošča</a>
+      <a href="reports.html">Poročila</a>
+      <div class="nav-group-label">Vnos</div>
+      <a href="forms/nova-preiskava.html">Nova preiskava</a>
+      <a href="forms/zaloga-reagentov.html">Zaloga reagentov</a>
+      <div class="nav-group-label">Nastavitve</div>
+      <a href="nastavitve/reagenti.html">Reagenti</a>
+    </nav>
+    <div style="margin-top:auto; padding-top:16px;">
+      <button id="logout-btn" class="btn" style="width:100%;">Odjava</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h1 id="process-title">Nalaganje ...</h1>
+    </div>
+
+    <div id="process-meta" class="card" style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:24px; font-size:13.5px;">
+      <!-- napolni process.js -->
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0; font-size:15px;">Rezultati meritev</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Čas meritve</th>
+            <th>Vrednost</th>
+            <th>Opomba</th>
+          </tr>
+        </thead>
+        <tbody id="results-table-body">
+          <!-- napolni process.js -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/process.js"></script>
+</body>
+</html>

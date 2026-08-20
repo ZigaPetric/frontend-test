@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova preiskava — Procesni nadzor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">● PROCESNI NADZOR</div>
+    <nav>
+      <a href="../dashboard.html">Nadzorna plošča</a>
+      <a href="../reports.html">Poročila</a>
+      <div class="nav-group-label">Vnos</div>
+      <a href="nova-preiskava.html">Nova preiskava</a>
+      <a href="zaloga-reagentov.html">Zaloga reagentov</a>
+      <div class="nav-group-label">Nastavitve</div>
+      <a href="../nastavitve/reagenti.html">Reagenti</a>
+    </nav>
+    <div style="margin-top:auto; padding-top:16px;">
+      <button id="logout-btn" class="btn" style="width:100%;">Odjava</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="card" style="max-width:520px; margin-top:8px;">
+      <form id="research-form" novalidate>
+        <div class="field">
+          <label for="researchId">ID preiskave</label>
+          <input type="text" id="researchId" name="researchId" required placeholder="npr. R-2026-014">
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="field">
+            <label for="laboratory">Laboratorij</label>
+            <select id="laboratory" name="laboratory" required>
+              <option value="">Izberi ...</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bench">Miza za pipetiranje</label>
+            <select id="bench" name="bench" required>
+              <option value="">Izberi ...</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="reagent">Reagent za pipetiranje</label>
+          <select id="reagent" name="reagent" required>
+            <option value="">Izberi ...</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="date">Datum</label>
+          <input type="text" id="date" name="date" readonly>
+          <div class="helptext">Datum se generira samodejno ob vnosu.</div>
+        </div>
+        <div class="field">
+          <label for="signature-pad">Podpis izvajalca</label>
+          <canvas id="signature-pad" class="signature-pad"></canvas>
+          <div class="signature-actions">
+            <div class="helptext">Podpiši z miško ali prstom.</div>
+            <button type="button" id="clear-signature" class="btn" style="font-size:12px; padding:6px 10px;">Počisti podpis</button>
+          </div>
+          <input type="hidden" id="signatureData" name="signature">
+          <div id="signature-error" class="form-error"></div>
+        </div>
+        <div id="form-error" class="form-error"></div>
+        <div id="form-success" class="helptext" style="display:none; color:var(--success);">Preiskava je bila shranjena.</div>
+        <button type="submit" class="btn btn-primary" style="margin-top:8px;">Shrani preiskavo</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/research.js"></script>
+</body>
+</html>

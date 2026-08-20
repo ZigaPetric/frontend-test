@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaloga reagentov — Procesni nadzor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">● PROCESNI NADZOR</div>
+    <nav>
+      <a href="../dashboard.html">Nadzorna plošča</a>
+      <a href="../reports.html">Poročila</a>
+      <div class="nav-group-label">Vnos</div>
+      <a href="nova-preiskava.html">Nova preiskava</a>
+      <a href="zaloga-reagentov.html">Zaloga reagentov</a>
+      <div class="nav-group-label">Nastavitve</div>
+      <a href="../nastavitve/reagenti.html">Reagenti</a>
+    </nav>
+    <div style="margin-top:auto; padding-top:16px;">
+      <button id="logout-btn" class="btn" style="width:100%;">Odjava</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div id="low-stock-banner" class="warning-banner" style="margin-top:8px;"></div>
+
+    <div class="grid grid-cols-2" style="align-items:start;">
+      <div class="card">
+        <h2 style="margin-top:0; font-size:15px;">Nova pošiljka</h2>
+        <form id="reagent-stock-form" novalidate>
+          <div class="field">
+            <label for="reagentName">Naziv reagenta</label>
+            <input type="text" id="reagentName" name="reagentName" required placeholder="npr. Etanol 70%" list="known-reagents">
+            <datalist id="known-reagents"></datalist>
+          </div>
+          <div class="field">
+            <label for="quantity">Količina v pošiljki</label>
+            <div style="display:flex; gap:8px;">
+              <input type="number" step="any" min="0" id="quantity" name="quantity" required placeholder="npr. 5" style="flex:1;">
+              <select id="unit" name="unit" style="max-width:140px;">
+                <option value="paketi">paketi</option>
+                <option value="ml">mililitri</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="receivedAt">Datum prejema</label>
+            <input type="text" id="receivedAt" name="receivedAt" readonly>
+            <div class="helptext">Datum se generira samodejno ob vnosu.</div>
+          </div>
+          <div id="form-error" class="form-error"></div>
+          <div id="form-success" class="helptext" style="display:none; color:var(--success);">Pošiljka je bila dodana v zalogo.</div>
+          <button type="submit" class="btn btn-primary" style="margin-top:8px;">Shrani pošiljko</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-top:0; font-size:15px;">Trenutna zaloga</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Reagent</th>
+              <th>Zaloga</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="stock-table-body">
+            <!-- napolni reagents.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/reagent-config.js"></script>
+<script src="../js/reagents.js"></script>
+</body>
+</html>
